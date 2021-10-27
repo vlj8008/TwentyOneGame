@@ -7,7 +7,8 @@ using System.IO;
 using Casino;
 using Casino.TwentyOne;
 using System.Data.SqlClient;
-using TwentyOneGame;
+using TwentyOne;
+using System.Data;
 
 namespace TwentyOne
 {
@@ -89,7 +90,7 @@ namespace TwentyOne
 
                 }
 
-                Game game = new TwentyOneGame();//polymorphism so can access overloaded operator
+                Game game = new TwentyOneGame();//polymorphism so can access overloaded operator 
 
                 game = game + player;
 
