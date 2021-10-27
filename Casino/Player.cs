@@ -4,12 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TwentyOneGame
+namespace Casino
 {
     public class Player
     {
         //Constructor
-        public Player (string name, int beginningBalance)
+
+        //Constructor Call Chain
+        //Helps re-use Constructors. 
+
+        public Player(string name) : this(name, 100) //: means we inherit from original constructor. 
+        {
+        } 
+
+        //original Constructor
+        public Player(string name, int beginningBalance)
         {
             Name = name;//Properties
             Balance = beginningBalance;
@@ -24,6 +33,7 @@ namespace TwentyOneGame
         public string Name { get; set; }
         public bool isActivelyPlaying { get; set; }
         public bool Stay { get; set; }
+        public Guid Id { get; set; }
 
         //Method to check to see if player has enough money to bet. 
         public bool Bet(int amount)

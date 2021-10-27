@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
-namespace TwentyOneGame
+namespace Casino.TwentyOne
 {
     public class TwentyOneGame : Game //":Game" means we inherit from the Game class
     {
@@ -25,11 +26,30 @@ namespace TwentyOneGame
             Dealer.Deck = new Deck();
             Dealer.Deck.Shuffle();
 
-            Console.WriteLine("Place your bet!");
+            
 
             foreach(Player player in Players)
             {
-                int bet = Convert.ToInt32(Console.ReadLine());
+                bool validBet = false;
+                int bet = 0;
+
+                while (!validBet)
+                {
+                    Console.WriteLine("Please enter your bet amount");
+                    validBet = int.TryParse(Console.ReadLine(), out bet);
+                    if (!validBet)
+                    {
+                        Console.WriteLine("Please enter just a whole number");
+                    }
+                }
+
+                if (bet < 0)
+                {
+                    throw new FraudException("Security kick this person out.");
+                }
+
+                
+
                 bool successfullyBet = player.Bet(bet);
 
                 if (!successfullyBet)
@@ -49,6 +69,8 @@ namespace TwentyOneGame
                 {
                     Console.WriteLine("{0}:", player.Name);
                     Dealer.Deal(player.Hand);
+
+                    
 
                     if (i == 1) //checking to see if blackjack has happened after second card dealt. 
                     {

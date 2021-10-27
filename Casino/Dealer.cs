@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace TwentyOneGame
+namespace Casino
 {
     public class Dealer
     {
@@ -25,13 +25,14 @@ namespace TwentyOneGame
             string card = string.Format(Deck.Cards.First().ToString() + "\n");
             Console.WriteLine(card);
 
-            //memory manager handles so don't lose memory
             using (StreamWriter file = new StreamWriter(@"C:\Users\vicky\OneDrive\Documents\GitHub\Basic_C#_Programs\log.txt", true))
             {
-                file.WriteLine(DateTime.Now); //using DateTime to write exact time. 
+                file.WriteLine(DateTime.Now);
                 file.WriteLine(card);
+
             }
-                Deck.Cards.RemoveAt(0);//remove that card from particular index (0).
+
+            Deck.Cards.RemoveAt(0);//remove that card from particular index (0).
         }
     }
 }

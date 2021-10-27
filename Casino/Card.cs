@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TwentyOneGame
+namespace Casino
 {
     public struct Card //changed from class to struct to be a value type instead of reference type. 
         //don't want card changing like reference types change and card will not be inherited. 
